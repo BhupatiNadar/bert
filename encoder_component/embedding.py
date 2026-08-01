@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
 
-from input_embedding import InputEmbedding
-from positional_embedding import PositionEmbedding
-from segment_embedding import SegmentEmbedding
+from encoder_component.input_embedding import InputEmbedding
+from encoder_component.positional_embedding import PositionEmbedding
+from encoder_component.segment_embedding import SegmentEmbedding
 
 
 class BertEmbedding(nn.Module):

@@ -1,17 +1,18 @@
 import torch
 import torch.nn as nn
 
-from layer_normalization import LayerNormalization
+from encoder_component.layer_normalization import LayerNormalization
+
 
 class Encoder(nn.Module):
-    
-    def __init__(self,layers:nn.ModuleList):
+
+    def __init__(self, layers: nn.ModuleList, hidden_size: int):
         super().__init__()
-        self.layers=layers
-        self.norm=LayerNormalization()
-    
-    def forward(self,x,mask):
+        self.layers = layers
+        self.norm = LayerNormalization(hidden_size=hidden_size)
+
+    def forward(self, x, mask):
         for layer in self.layers:
-            x=layer(x,mask)
-        
+            x = layer(x, mask)
+
         return self.norm(x)
